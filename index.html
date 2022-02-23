@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Key Detection</title>
+        <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+        <style>
+            body{
+                text-align: center;
+                justify-content: center;
+                padding:10%;
+                background-color:teal;
+                color:white;
+        
+            }
+            input{
+                padding: 5px;
+                border: 2px solid black;
+                margin:5px
+            }
+        </style>
+    </head>
+    <body>
+        <h1>hii Enter the secret code:</h1>
+        <input type="text" id="input">
+        <input  type="Submit"  onclick=getInput()>
+        <div>
+            <input type="text" placeholder="Start typing">
+        </div>
+        
+    <script>
+        pressed=[]
+        secretCode=[]
+        function getInput(){
+            var inp = document.getElementById("input").value;
+            secretCode=inp
+            start()
+        }
+        function start(){
+            if(secretCode.length!=0){
+            window.addEventListener('keyup',(e) => {
+            pressed.push(e.key);
+            pressed.splice(-secretCode.length -1,pressed.length-secretCode.length);
+            if(pressed.join('').includes(secretCode)){
+                alert('DING! DING! DING!');
+                console.log(pressed)
+                cornify_add()
+            }
+            
+        });
+        } 
+        }
+        
+        
+            
+        
+    </script>
+    </body>
+    
+</html>
